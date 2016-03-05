@@ -34,7 +34,7 @@
     
     infiniteScrolView.pageControl.pageIndicatorTintColor = [UIColor grayColor];
     infiniteScrolView.pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
-    infiniteScrolView.placeHolder = [UIImage imageNamed:@"fj_placeHolderI"];
+
     infiniteScrolView.delegate = self;
     
 //    infiniteScrolView.scrollDirection = FJInfiniteScrollDirectionVertical;

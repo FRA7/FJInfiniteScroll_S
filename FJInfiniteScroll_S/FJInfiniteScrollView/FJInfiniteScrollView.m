@@ -63,6 +63,9 @@ static NSInteger FJImageViewCount = 3;
         
         //滚动方向
         self.scrollDirection = FJInfiniteScrollDirectionHorizontal;
+        
+        //占位图片
+        self.placeHolder = [UIImage imageNamed:@"FJInfiniteScrollView.bundle/placeHolder"];
     
     }
     return self;
