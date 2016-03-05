@@ -13,6 +13,7 @@
 		15F02A091C8A69A300365C71 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15F02A071C8A69A300365C71 /* Main.storyboard */; };
 		15F02A0B1C8A69A300365C71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15F02A0A1C8A69A300365C71 /* Assets.xcassets */; };
 		15F02A0E1C8A69A300365C71 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15F02A0C1C8A69A300365C71 /* LaunchScreen.storyboard */; };
+		15F02A171C8A6A2D00365C71 /* FJInfiniteScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F02A161C8A6A2D00365C71 /* FJInfiniteScrollView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		15F02A0A1C8A69A300365C71 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		15F02A0D1C8A69A300365C71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		15F02A0F1C8A69A300365C71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		15F02A151C8A6A2D00365C71 /* FJInfiniteScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJInfiniteScrollView.h; sourceTree = "<group>"; };
+		15F02A161C8A6A2D00365C71 /* FJInfiniteScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJInfiniteScrollView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +70,8 @@
 				15F02A0C1C8A69A300365C71 /* LaunchScreen.storyboard */,
 				15F02A0F1C8A69A300365C71 /* Info.plist */,
 				15F029FE1C8A69A300365C71 /* Supporting Files */,
+				15F02A151C8A6A2D00365C71 /* FJInfiniteScrollView.h */,
+				15F02A161C8A6A2D00365C71 /* FJInfiniteScrollView.m */,
 			);
 			path = FJInfiniteScroll_S;
 			sourceTree = "<group>";
@@ -151,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15F02A061C8A69A300365C71 /* ViewController.m in Sources */,
+				15F02A171C8A6A2D00365C71 /* FJInfiniteScrollView.m in Sources */,
 				15F02A031C8A69A300365C71 /* AppDelegate.m in Sources */,
 				15F02A001C8A69A300365C71 /* main.m in Sources */,
 			);
