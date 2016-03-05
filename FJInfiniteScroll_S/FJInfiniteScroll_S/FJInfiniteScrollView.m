@@ -17,6 +17,7 @@
 
 @implementation FJInfiniteScrollView
 /** scrollView中UIImageView的数量 */
+
 static NSInteger FJImageViewCount = 3;
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -39,13 +40,13 @@ static NSInteger FJImageViewCount = 3;
         for (NSInteger i = 0; i < FJImageViewCount; i++) {
             
             UIImageView *imageView = [[UIImageView alloc] init];
-            [self addSubview:imageView];
+            [scrollView addSubview:imageView];
             
         }
         
         //UIPageControl
         UIPageControl *pageControl = [[UIPageControl alloc] init];
-        pageControl.backgroundColor = [UIColor greenColor];
+        pageControl.backgroundColor = [UIColor blueColor];
         [self addSubview:pageControl];
         self.pageControl = pageControl;
         
@@ -146,4 +147,5 @@ static NSInteger FJImageViewCount = 3;
     
     [self updateContentAndOffset];
 }
+
 @end
