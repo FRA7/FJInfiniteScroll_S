@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "FJInfiniteScrollView.h"
-#import "FJScrollView.h"
+
 
 @interface ViewController ()<FJInfiniteScrollViewDelegate>
 

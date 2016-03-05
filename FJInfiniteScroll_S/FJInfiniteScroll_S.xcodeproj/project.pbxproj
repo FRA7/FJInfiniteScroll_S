@@ -28,7 +28,6 @@
 		15F02A411C8A84DD00365C71 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F02A311C8A84DD00365C71 /* UIImageView+HighlightedWebCache.m */; };
 		15F02A421C8A84DD00365C71 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F02A331C8A84DD00365C71 /* UIImageView+WebCache.m */; };
 		15F02A431C8A84DD00365C71 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F02A351C8A84DD00365C71 /* UIView+WebCacheOperation.m */; };
-		15F02A461C8A87C400365C71 /* FJScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F02A451C8A87C400365C71 /* FJScrollView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,8 +72,6 @@
 		15F02A331C8A84DD00365C71 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		15F02A341C8A84DD00365C71 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		15F02A351C8A84DD00365C71 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
-		15F02A441C8A87C400365C71 /* FJScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJScrollView.h; sourceTree = "<group>"; };
-		15F02A451C8A87C400365C71 /* FJScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJScrollView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,8 +116,6 @@
 				15F029FE1C8A69A300365C71 /* Supporting Files */,
 				15F02A151C8A6A2D00365C71 /* FJInfiniteScrollView.h */,
 				15F02A161C8A6A2D00365C71 /* FJInfiniteScrollView.m */,
-				15F02A441C8A87C400365C71 /* FJScrollView.h */,
-				15F02A451C8A87C400365C71 /* FJScrollView.m */,
 			);
 			path = FJInfiniteScroll_S;
 			sourceTree = "<group>";
@@ -243,7 +238,6 @@
 				15F02A361C8A84DD00365C71 /* NSData+ImageContentType.m in Sources */,
 				15F02A3C1C8A84DD00365C71 /* SDWebImageManager.m in Sources */,
 				15F02A411C8A84DD00365C71 /* UIImageView+HighlightedWebCache.m in Sources */,
-				15F02A461C8A87C400365C71 /* FJScrollView.m in Sources */,
 				15F02A3A1C8A84DD00365C71 /* SDWebImageDownloader.m in Sources */,
 				15F02A421C8A84DD00365C71 /* UIImageView+WebCache.m in Sources */,
 				15F02A371C8A84DD00365C71 /* SDImageCache.m in Sources */,
