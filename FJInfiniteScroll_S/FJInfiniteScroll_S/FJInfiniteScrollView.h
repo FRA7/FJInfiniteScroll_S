@@ -7,6 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+@class FJInfiniteScrollView;
+
+@protocol FJInfiniteScrollViewDelegate <NSObject>
+@optional
+- (void)infiniteScrollView:(FJInfiniteScrollView *)infiniteScrollView didClickImageAtIndex:(NSInteger)index;
+
+@end
 
 typedef NS_ENUM(NSInteger, FJInfiniteScrollDirection) {
     /** 左右滑动 */
@@ -26,4 +33,7 @@ typedef NS_ENUM(NSInteger, FJInfiniteScrollDirection) {
 @property (nonatomic ,weak,readonly) UIPageControl *pageControl;
 /** 滚动方向*/
 @property (nonatomic ,assign) FJInfiniteScrollDirection scrollDirection;
+
+/** 代理*/
+@property (nonatomic ,weak) id<FJInfiniteScrollViewDelegate> delegate;
 @end

@@ -44,12 +44,16 @@ static NSInteger FJImageViewCount = 3;
         for (NSInteger i = 0; i < FJImageViewCount; i++) {
             
             UIImageView *imageView = [[UIImageView alloc] init];
+            imageView.userInteractionEnabled = YES;
+            [imageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageClick:)]];
+             
             [scrollView addSubview:imageView];
             
         }
         
         //UIPageControl
         UIPageControl *pageControl = [[UIPageControl alloc] init];
+        pageControl.userInteractionEnabled = NO;
         [self addSubview:pageControl];
         self.pageControl = pageControl;
         
@@ -102,7 +106,10 @@ static NSInteger FJImageViewCount = 3;
     //更新内容
     [self updateContentAndOffset];
 }
-
+#pragma mark - 私有方法
+/**
+ *  更新图片内容和scrollView的偏移量
+ */
 -(void)updateContentAndOffset{
     
     //1.更新imageView上面的内容
@@ -149,6 +156,20 @@ static NSInteger FJImageViewCount = 3;
     
     
 }
+
+#pragma mark - 监听点击
+/**
+ *  图片点击
+ *
+ */
+-(void)imageClick:(UITapGestureRecognizer *)tap{
+    
+    if ([self.delegate respondsToSelector:@selector(infiniteScrollView:didClickImageAtIndex:)]) {
+        [self.delegate infiniteScrollView:self didClickImageAtIndex:tap.view.tag];
+    }
+}
+
+#pragma mark - setter
 -(void)setTimerInterval:(NSTimeInterval)timerInterval{
     _timerInterval = timerInterval;
     
@@ -162,6 +183,7 @@ static NSInteger FJImageViewCount = 3;
     self.pageControl.numberOfPages = images.count;
 }
 
+#pragma mark - <UIScrollViewDelegate>
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
     //找出显示在最中间的imageview
@@ -210,6 +232,8 @@ static NSInteger FJImageViewCount = 3;
     
     [self startTimer];
 }
+
+#pragma mark - 定时器
 -(void)startTimer{
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(nextPage) userInfo:nil repeats:YES];
     [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];

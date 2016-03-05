@@ -10,7 +10,7 @@
 #import "FJInfiniteScrollView.h"
 #import "FJScrollView.h"
 
-@interface ViewController ()
+@interface ViewController ()<FJInfiniteScrollViewDelegate>
 
 @end
 
@@ -35,10 +35,19 @@
     infiniteScrolView.pageControl.pageIndicatorTintColor = [UIColor grayColor];
     infiniteScrolView.pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
     infiniteScrolView.placeHolder = [UIImage imageNamed:@"fj_placeHolderI"];
+    infiniteScrolView.delegate = self;
     
 //    infiniteScrolView.scrollDirection = FJInfiniteScrollDirectionVertical;
     
     [self.view addSubview:infiniteScrolView];
 }
 
+
+#pragma mark - <FJInfiniteScrollViewDelegate> 实现代理方法
+-(void)infiniteScrollView:(FJInfiniteScrollView *)infiniteScrollView didClickImageAtIndex:(NSInteger)index{
+    
+    NSLog(@"点击了第%zd张图片",index);
+    
+ 
+}
 @end
