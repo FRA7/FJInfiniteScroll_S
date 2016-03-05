@@ -12,6 +12,9 @@
 
 @property (nonatomic ,weak) UIScrollView *scrollView;
 @property (nonatomic ,weak) UIPageControl *pageControl;
+/** 定时器*/
+@property (nonatomic ,weak) NSTimer *timer;
+
 
 @end
 
@@ -51,6 +54,8 @@ static NSInteger FJImageViewCount = 3;
         self.pageControl = pageControl;
         
     
+        //开启定时器
+        [self startTimer];
     
     }
     return self;
@@ -147,5 +152,42 @@ static NSInteger FJImageViewCount = 3;
     
     [self updateContentAndOffset];
 }
+/**
+ *  即将开始拖拽
+ *
+ */
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+   
+    [self stopTimer];
+}
+/**
+ *  松开手时调用
+ *
+ */
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    
+    [self startTimer];
+}
+-(void)startTimer{
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(nextPage) userInfo:nil repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+    
+}
 
+-(void)stopTimer{
+    
+    [self.timer invalidate];
+    self.timer = nil;
+}
+
+-(void)nextPage{
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        
+        self.scrollView.contentOffset = CGPointMake(2 * self.scrollView.frame.size.width, 0);
+    } completion:^(BOOL finished) {
+        
+        [self updateContentAndOffset];
+    }];
+}
 @end
