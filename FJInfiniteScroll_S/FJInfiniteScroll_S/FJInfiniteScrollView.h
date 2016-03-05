@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, FJInfiniteScrollDirection) {
+    /** 左右滑动 */
+    FJInfiniteScrollDirectionHorizontal = 0,
+    /** 上下滑动 */
+    FJInfiniteScrollDirectionVertical = 1
+};
+
 @interface FJInfiniteScrollView : UIView
 /** 图片数据(里面可以存放UIImage对象、NSString对象【本地图片名】、NSURL对象【远程图片的URL】) */
 @property (nonatomic ,strong) NSArray *images;
@@ -17,4 +24,6 @@
 @property (nonatomic ,assign) NSTimeInterval timerInterval;
 
 @property (nonatomic ,weak,readonly) UIPageControl *pageControl;
+/** 滚动方向*/
+@property (nonatomic ,assign) FJInfiniteScrollDirection scrollDirection;
 @end

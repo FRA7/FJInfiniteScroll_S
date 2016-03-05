@@ -50,16 +50,15 @@ static NSInteger FJImageViewCount = 3;
         
         //UIPageControl
         UIPageControl *pageControl = [[UIPageControl alloc] init];
-        pageControl.backgroundColor = [UIColor blueColor];
         [self addSubview:pageControl];
         self.pageControl = pageControl;
         
-    
-//        //开启定时器
-//        [self startTimer];
         
         //时间间隔
         self.timerInterval = 1.5;
+        
+        //滚动方向
+        self.scrollDirection = FJInfiniteScrollDirectionHorizontal;
     
     }
     return self;
@@ -74,13 +73,24 @@ static NSInteger FJImageViewCount = 3;
     
     //UIScrollView
     self.scrollView.frame = self.bounds;
-    self.scrollView.contentSize  = CGSizeMake(FJImageViewCount * selfW, 0);
+    if (self.scrollDirection == FJInfiniteScrollDirectionHorizontal) {
+        self.scrollView.contentSize  = CGSizeMake(FJImageViewCount * selfW, 0);
+    }else if (self.scrollDirection == FJInfiniteScrollDirectionVertical){
+        self.scrollView.contentSize  = CGSizeMake(0, FJImageViewCount * selfH);
+    }
+    
     
     //UIImageView
     for (NSInteger i = 0; i < FJImageViewCount; i++) {
         
         UIImageView *imageView = self.scrollView.subviews[i];
-        imageView.frame = CGRectMake(i * selfW, 0, selfW, selfH);
+        
+        if (self.scrollDirection == FJInfiniteScrollDirectionHorizontal) {
+            imageView.frame = CGRectMake(i * selfW, 0, selfW, selfH);
+        }else if (self.scrollDirection == FJInfiniteScrollDirectionVertical){
+            imageView.frame = CGRectMake(0, i * selfH, selfW, selfH);
+        }
+        
         
     }
     
@@ -131,7 +141,12 @@ static NSInteger FJImageViewCount = 3;
     }
     
     //2.设置scrollView.contentOffset.x = 1倍宽度
-    self.scrollView.contentOffset = CGPointMake(self.scrollView.frame.size.width, 0);
+    if (self.scrollDirection == FJInfiniteScrollDirectionHorizontal) {
+        self.scrollView.contentOffset = CGPointMake(self.scrollView.frame.size.width, 0);
+    }else if (self.scrollDirection == FJInfiniteScrollDirectionVertical){
+        self.scrollView.contentOffset = CGPointMake(0, self.scrollView.frame.size.height);
+    }
+    
     
 }
 -(void)setTimerInterval:(NSTimeInterval)timerInterval{
@@ -157,7 +172,13 @@ static NSInteger FJImageViewCount = 3;
         UIImageView *imageView = self.scrollView.subviews[i];
         
         //x值和偏移量x值差值最小的imageView ,就显示在最中间的imageView
-        CGFloat currentDelta = ABS(imageView.frame.origin.x - self.scrollView.contentOffset.x);
+        CGFloat currentDelta = 0;
+        if (self.scrollDirection == FJInfiniteScrollDirectionHorizontal) {
+           currentDelta = ABS(imageView.frame.origin.x - self.scrollView.contentOffset.x);
+        }else if (self.scrollDirection == FJInfiniteScrollDirectionVertical){
+           currentDelta = ABS(imageView.frame.origin.y - self.scrollView.contentOffset.y);
+        }
+        
         if (currentDelta < minDelta) {
             minDelta = currentDelta;
             middleImageView = imageView;
@@ -205,7 +226,12 @@ static NSInteger FJImageViewCount = 3;
     
     [UIView animateWithDuration:0.25 animations:^{
         
-        self.scrollView.contentOffset = CGPointMake(2 * self.scrollView.frame.size.width, 0);
+        if (self.scrollDirection == FJInfiniteScrollDirectionHorizontal) {
+            self.scrollView.contentOffset = CGPointMake(2 * self.scrollView.frame.size.width, 0);
+        }else if (self.scrollDirection == FJInfiniteScrollDirectionVertical){
+            self.scrollView.contentOffset = CGPointMake(0, 2 * self.scrollView.frame.size.height);
+        }
+        
     } completion:^(BOOL finished) {
         
         [self updateContentAndOffset];
