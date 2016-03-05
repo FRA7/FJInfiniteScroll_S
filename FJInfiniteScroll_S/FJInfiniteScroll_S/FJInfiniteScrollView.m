@@ -7,6 +7,7 @@
 //
 
 #import "FJInfiniteScrollView.h"
+#import "UIImageView+WebCache.h"
 
 @interface FJInfiniteScrollView()<UIScrollViewDelegate>
 
@@ -54,8 +55,11 @@ static NSInteger FJImageViewCount = 3;
         self.pageControl = pageControl;
         
     
-        //开启定时器
-        [self startTimer];
+//        //开启定时器
+//        [self startTimer];
+        
+        //时间间隔
+        self.timerInterval = 1.5;
     
     }
     return self;
@@ -112,12 +116,29 @@ static NSInteger FJImageViewCount = 3;
         }
         
         imageView.tag = imageIndex;
-        imageView.image = self.images[imageIndex];
+        
+        //图片数据
+        id obj = self.images[imageIndex];
+        if ([obj isKindOfClass:[UIImage class]]) {//UIImage对象
+            imageView.image = obj;
+        }else if ([obj isKindOfClass:[NSString class]]){//本地图片
+            imageView.image = [UIImage imageNamed:obj];
+        }else if ([obj isKindOfClass:[NSURL class]]){//远程图片
+
+            [imageView sd_setImageWithURL:obj placeholderImage:self.placeHolder];
+
+        }
     }
     
     //2.设置scrollView.contentOffset.x = 1倍宽度
     self.scrollView.contentOffset = CGPointMake(self.scrollView.frame.size.width, 0);
     
+}
+-(void)setTimerInterval:(NSTimeInterval)timerInterval{
+    _timerInterval = timerInterval;
+    
+    [self stopTimer];
+    [self startTimer];
 }
 
 -(void)setImages:(NSArray *)images{
